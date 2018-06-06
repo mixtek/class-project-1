@@ -1,5 +1,6 @@
 ** Project Title **
 
+
 ** Team Members **
 Anna Zhang
 Sophie Gotsadze
@@ -8,13 +9,33 @@ Sophia Kang
 
 
 ** Project Description/Outline **
+24-Hour Fitness Franchises Still Growing; Is There Still Room For More? 
+Which city can be the next? 
+Background: https://smallbiztrends.com/2009/02/24-hour-fitness-franchises-still-growing-is-there-still-room-for-more.html
+
 
 ** Research Questions to Answer **
-1. The demographics behind who is shopping at walmart and try to get at why that might be
-2. economic growth equates to more Wal Marts
-3. Walmart/Target locations vs. BLS. 
-4. Geolocation analysis of Target/Walmart-related tweets by Tweet IP 
-5. Sentiment analysis of Target/Walmart-related tweets
+
+As 24-hour Gyms seems becoming a demand, we’d like to see what kind of city will be more likely to welcome 24-hour gyms. 
+City with young people? With high hourly wage? With more obesity? 
+We will review the below data in several metropolitan areas, and then create an index for prediction. 
+
+1.	The ratio of 24 hour gym number/non-24 hour gym  vs. city size/population – scatter chart 
+
+2.	24 hour gym number vs. metropolitan expenditure in personal care vs. metropolitan population age – Bubble chart  
+https://www.bls.gov/cex/csxmsa.htm
+
+3.	24/7 gym number vs. income vs. employment rate – bubble chart
+https://www.bls.gov/regions/new-york-new-jersey/data/xg-tables/ro2xg02.htm
+
+4.	24 hour gym number vs. non-24 hour gym vs. obesity rate – bar chart 
+
+
+
+Risks: 
+1.	Need to decide what city to use as baselines. And what cities for prediction 
+2.	May need to use web scraping to find out all gym locations  
+3.  Need to get obesity data 
 
 
 ** Data Sets to be Used **
