@@ -1,15 +1,50 @@
 location,total_gyms,total_24hr_gyms,ratio%
-"Atlanta,GA",1500,115,7.67
-"Chicago,IL",2300,114,4.96
-"Dallas,TX",1600,128,8.0
-"Denver,CO",1600,96,6.0
-"Detroit,MI",718,69,9.61
-"Los Angeles,CA",6600,185,2.8
-"Miami,FL",1300,47,3.62
-"Philadelphia,PA",1400,86,6.14
 "New York,NY",5100,152,2.98
+"Los Angeles,CA",6600,185,2.8
+"Chicago,IL",2300,114,4.96
+"Houston,TX",1500,104,6.93
+"Phoenix,AZ",1700,90,5.29
+"Philadelphia,PA",1400,86,6.14
+"San Antonio,TX",533,55,10.32
+"San Diego,CA",2400,75,3.12
+"Dallas,TX",1600,128,8.0
+"San Jose,CA",1900,49,2.58
+"Austin,TX",1200,55,4.58
+"Jacksonville,FL",341,32,9.38
+"San Francisco,CA",2600,37,1.42
+"Columbus,OH",438,32,7.31
+"Indianapolis,IN",410,51,12.44
+"Fort Worth,TX",726,80,11.02
+"Charlotte,NC",562,52,9.25
 "Seattle,WA",1600,44,2.75
-"Columbus,OH",439,32,7.29
-"Nashville,TN",460,48,10.43
-"Boston,MA",1300,21,1.62
+"Denver,CO",1600,96,6.0
+"El Paso,TX",121,19,15.7
 "Washington,DC",1200,37,3.08
+"Boston,MA",1300,21,1.62
+"Detroit,MI",718,69,9.61
+"Nashville,TN",460,48,10.43
+"Memphis,TN",174,16,9.2
+"Portland,OR",1100,54,4.91
+"Oklahoma City,OK",237,30,12.66
+"Las Vegas,NV",850,72,8.47
+"Louisville,KY",203,28,13.79
+"Baltimore,MD",336,28,8.33
+"Milwaukee,WI",379,41,10.82
+"Albuquerque,NM",248,32,12.9
+"Tucson,AZ",306,22,7.19
+"Fresno,CA",217,15,6.91
+"Sacramento,CA",1000,48,4.8
+"Mesa,AZ",1500,77,5.13
+"Kansas City,MO",467,42,8.99
+"Atlanta,GA",1500,115,7.67
+"Long Beach,CA",1500,67,4.47
+"Colorado Springs,CO",203,13,6.4
+"Raleigh,NC",574,28,4.88
+"Miami,FL",1300,47,3.62
+"Virginia Beach,VA",365,35,9.59
+"Omaha,NE",205,18,8.78
+"Oakland,CA",2500,44,1.76
+"Minneapolis,MN",819,100,12.21
+"Tulsa,OK",154,22,14.29
+"Arlington,TX",289,40,13.84
+"New Orleans,LA",293,30,10.24
