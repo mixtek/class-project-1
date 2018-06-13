@@ -1,0 +1,1146 @@
+
+
+```python
+#Create Dependencies
+
+import pandas as pd
+import numpy as np
+import os
+
+
+```
+
+
+```python
+#Create Filepath
+df = pd.read_csv("2FiftyCity_ObesityRates.csv")
+df.head(50)
+
+
+
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>State</th>
+      <th>City</th>
+      <th>Obesity %</th>
+      <th>Unnamed: 3</th>
+      <th>Unnamed: 4</th>
+      <th>Unnamed: 5</th>
+      <th>Unnamed: 6</th>
+      <th>Unnamed: 7</th>
+      <th>Unnamed: 8</th>
+      <th>Unnamed: 9</th>
+      <th>Unnamed: 10</th>
+      <th>Unnamed: 11</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>TN</td>
+      <td>Memphis</td>
+      <td>35.8</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>TX</td>
+      <td>Arlington</td>
+      <td>35.3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>TX</td>
+      <td>Fort Worth</td>
+      <td>35.3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>TX</td>
+      <td>Dallas</td>
+      <td>33.8</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>MI</td>
+      <td>Detroit</td>
+      <td>33.1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>LA</td>
+      <td>New Orleans</td>
+      <td>32.6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>KY</td>
+      <td>Louisville</td>
+      <td>31.2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>OH</td>
+      <td>Columbus</td>
+      <td>30.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>VA</td>
+      <td>Virginia Beach</td>
+      <td>30.3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>OK</td>
+      <td>Oklahoma City</td>
+      <td>30.1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>OK</td>
+      <td>Tulsa</td>
+      <td>30.1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>TX</td>
+      <td>San Antonio</td>
+      <td>29.8</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>MO</td>
+      <td>Kansas City</td>
+      <td>29.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>TX</td>
+      <td>Houston</td>
+      <td>29.1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>GA</td>
+      <td>Atlanta</td>
+      <td>28.7</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>TX</td>
+      <td>El Paso</td>
+      <td>28.6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>FL</td>
+      <td>Miami</td>
+      <td>28.3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>IN</td>
+      <td>Indianapolis</td>
+      <td>28.2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>MD</td>
+      <td>Baltimore</td>
+      <td>28.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>NC</td>
+      <td>Charlotte</td>
+      <td>28.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>TX</td>
+      <td>Austin</td>
+      <td>27.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>IL</td>
+      <td>Chicago</td>
+      <td>27.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>NC</td>
+      <td>Raleigh</td>
+      <td>27.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>CA</td>
+      <td>Fresno</td>
+      <td>26.6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>AZ</td>
+      <td>Tucson</td>
+      <td>26.6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>CA</td>
+      <td>San Diego</td>
+      <td>26.1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>FL</td>
+      <td>Jacksonville</td>
+      <td>26.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>WI</td>
+      <td>Milwaukee</td>
+      <td>26.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>OR</td>
+      <td>Portland</td>
+      <td>26.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>NE</td>
+      <td>Omaha</td>
+      <td>25.8</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>DC</td>
+      <td>Washington</td>
+      <td>25.2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>MN</td>
+      <td>Minneapolis</td>
+      <td>24.9</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>TN</td>
+      <td>Nashville</td>
+      <td>24.7</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>PA</td>
+      <td>Philadelphia</td>
+      <td>24.4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>CA</td>
+      <td>Long Beach</td>
+      <td>24.3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>CA</td>
+      <td>Los Angeles</td>
+      <td>24.3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>CA</td>
+      <td>Sacramento</td>
+      <td>24.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>CO</td>
+      <td>Colorado Springs</td>
+      <td>23.6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>NV</td>
+      <td>Las Vegas</td>
+      <td>23.1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>AZ</td>
+      <td>Mesa</td>
+      <td>22.8</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>AZ</td>
+      <td>Phoenix</td>
+      <td>22.8</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>WA</td>
+      <td>Seattle</td>
+      <td>22.8</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>MA</td>
+      <td>Boston</td>
+      <td>22.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>NY</td>
+      <td>New York</td>
+      <td>21.9</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>NM</td>
+      <td>Albuquerque</td>
+      <td>21.7</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>CA</td>
+      <td>San Jose</td>
+      <td>21.2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>CO</td>
+      <td>Denver</td>
+      <td>19.6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>CA</td>
+      <td>Oakland</td>
+      <td>18.2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>CA</td>
+      <td>San Francisco</td>
+      <td>18.2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+df.drop('Unnamed: 3', axis=1, inplace=True)
+df.drop('Unnamed: 4', axis=1, inplace=True)
+df.drop('Unnamed: 5', axis=1, inplace=True)
+df.drop('Unnamed: 6', axis=1, inplace=True)
+df.drop('Unnamed: 7', axis=1, inplace=True)
+df.drop('Unnamed: 8', axis=1, inplace=True)
+df.drop('Unnamed: 9', axis=1, inplace=True)
+df.drop('Unnamed: 10', axis=1, inplace=True)
+df.drop('Unnamed: 11', axis=1, inplace=True)
+
+
+
+```
+
+
+```python
+df.head(50)
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>State</th>
+      <th>City</th>
+      <th>Obesity %</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>TN</td>
+      <td>Memphis</td>
+      <td>35.8</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>TX</td>
+      <td>Arlington</td>
+      <td>35.3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>TX</td>
+      <td>Fort Worth</td>
+      <td>35.3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>TX</td>
+      <td>Dallas</td>
+      <td>33.8</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>MI</td>
+      <td>Detroit</td>
+      <td>33.1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>LA</td>
+      <td>New Orleans</td>
+      <td>32.6</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>KY</td>
+      <td>Louisville</td>
+      <td>31.2</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>OH</td>
+      <td>Columbus</td>
+      <td>30.5</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>VA</td>
+      <td>Virginia Beach</td>
+      <td>30.3</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>OK</td>
+      <td>Oklahoma City</td>
+      <td>30.1</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>OK</td>
+      <td>Tulsa</td>
+      <td>30.1</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>TX</td>
+      <td>San Antonio</td>
+      <td>29.8</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>MO</td>
+      <td>Kansas City</td>
+      <td>29.5</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>TX</td>
+      <td>Houston</td>
+      <td>29.1</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>GA</td>
+      <td>Atlanta</td>
+      <td>28.7</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>TX</td>
+      <td>El Paso</td>
+      <td>28.6</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>FL</td>
+      <td>Miami</td>
+      <td>28.3</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>IN</td>
+      <td>Indianapolis</td>
+      <td>28.2</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>MD</td>
+      <td>Baltimore</td>
+      <td>28.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>NC</td>
+      <td>Charlotte</td>
+      <td>28.0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>TX</td>
+      <td>Austin</td>
+      <td>27.0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>IL</td>
+      <td>Chicago</td>
+      <td>27.0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>NC</td>
+      <td>Raleigh</td>
+      <td>27.0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>CA</td>
+      <td>Fresno</td>
+      <td>26.6</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>AZ</td>
+      <td>Tucson</td>
+      <td>26.6</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>CA</td>
+      <td>San Diego</td>
+      <td>26.1</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>FL</td>
+      <td>Jacksonville</td>
+      <td>26.0</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>WI</td>
+      <td>Milwaukee</td>
+      <td>26.0</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>OR</td>
+      <td>Portland</td>
+      <td>26.0</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>NE</td>
+      <td>Omaha</td>
+      <td>25.8</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>DC</td>
+      <td>Washington</td>
+      <td>25.2</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>MN</td>
+      <td>Minneapolis</td>
+      <td>24.9</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>TN</td>
+      <td>Nashville</td>
+      <td>24.7</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>PA</td>
+      <td>Philadelphia</td>
+      <td>24.4</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>CA</td>
+      <td>Long Beach</td>
+      <td>24.3</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>CA</td>
+      <td>Los Angeles</td>
+      <td>24.3</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>CA</td>
+      <td>Sacramento</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>CO</td>
+      <td>Colorado Springs</td>
+      <td>23.6</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>NV</td>
+      <td>Las Vegas</td>
+      <td>23.1</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>AZ</td>
+      <td>Mesa</td>
+      <td>22.8</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>AZ</td>
+      <td>Phoenix</td>
+      <td>22.8</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>WA</td>
+      <td>Seattle</td>
+      <td>22.8</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>MA</td>
+      <td>Boston</td>
+      <td>22.0</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>NY</td>
+      <td>New York</td>
+      <td>21.9</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>NM</td>
+      <td>Albuquerque</td>
+      <td>21.7</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>CA</td>
+      <td>San Jose</td>
+      <td>21.2</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>CO</td>
+      <td>Denver</td>
+      <td>19.6</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>CA</td>
+      <td>Oakland</td>
+      <td>18.2</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>CA</td>
+      <td>San Francisco</td>
+      <td>18.2</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
