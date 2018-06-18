@@ -1,0 +1,50 @@
+city,state,ratio%
+New York,NY,2.98
+Los Angeles,CA,2.8
+Chicago,IL,4.96
+Houston,TX,6.93
+Phoenix,AZ,5.29
+Philadelphia,PA,6.14
+San Antonio,TX,10.32
+San Diego,CA,3.12
+Dallas,TX,8.0
+San Jose,CA,2.58
+Austin,TX,4.58
+Jacksonville,FL,9.38
+San Francisco,CA,1.42
+Columbus,OH,7.31
+Indianapolis,IN,12.44
+Fort Worth,TX,11.02
+Charlotte,NC,9.25
+Seattle,WA,2.75
+Denver,CO,6.0
+El Paso,TX,15.7
+Washington,DC,3.08
+Boston,MA,1.62
+Detroit,MI,9.61
+Nashville,TN,10.43
+Memphis,TN,9.2
+Portland,OR,4.91
+Oklahoma City,OK,12.66
+Las Vegas,NV,8.47
+Louisville,KY,13.79
+Baltimore,MD,8.33
+Milwaukee,WI,10.82
+Albuquerque,NM,12.9
+Tucson,AZ,7.19
+Fresno,CA,6.91
+Sacramento,CA,4.8
+Mesa,AZ,5.13
+Kansas City,MO,8.99
+Atlanta,GA,7.67
+Long Beach,CA,4.47
+Colorado Springs,CO,6.4
+Raleigh,NC,4.88
+Miami,FL,3.62
+Virginia Beach,VA,9.59
+Omaha,NE,8.78
+Oakland,CA,1.76
+Minneapolis,MN,12.21
+Tulsa,OK,14.29
+Arlington,TX,13.84
+New Orleans,LA,10.24
